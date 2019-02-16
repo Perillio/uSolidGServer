@@ -16,8 +16,9 @@ namespace uSolidGServer
             socket.SendBufferSize = 4096;
             socket.ReceiveBufferSize = 4096;
             stream = socket.GetStream();
+            recBuffer = new byte[4096];
             stream.BeginRead(recBuffer, 0, socket.ReceiveBufferSize, OnRecieveData, null);
-            Console.WriteLine("Icoming connection from '{0}'.", socket.Client.RemoteEndPoint.ToString());
+            Console.WriteLine("Icoming connection from ", socket.Client.RemoteEndPoint.ToString());
         }
 
         private void OnRecieveData(IAsyncResult result)
